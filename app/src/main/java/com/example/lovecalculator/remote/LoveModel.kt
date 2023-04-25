@@ -1,6 +1,7 @@
 package com.example.lovecalculator.remote
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class LoveModel(
 
@@ -10,4 +11,4 @@ data class LoveModel(
     var secondName: String,
     var percentage: String,
     var result: String
-)
+): Serializable

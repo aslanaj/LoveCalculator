@@ -17,27 +17,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        initClicker()
     }
 
-    private fun initClicker() {
-        with(binding) {
-            btnCalculate.setOnClickListener {
-                RetrofitService().api.percentageNames(
-                    etFirstName.text.toString(),
-                    etSecondName.text.toString()
-                ).enqueue(object : Callback<LoveModel> {
-                    override fun onResponse(call: Call<LoveModel>, response: Response<LoveModel>) {
-                        Log.e("ololo", "onResponse: ${response.body()}")
-                    }
-
-                    override fun onFailure(call: Call<LoveModel>, t: Throwable) {
-                        Log.e("ololo", "onFailure: ${t.message} ")
-                    }
-                })
-            }
-        }
-    }
 
 
 }
