@@ -1,6 +1,5 @@
-package com.example.lovecalculator
+package com.example.lovecalculator.ui.resultFragment
 
-import android.os.Binder
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -28,7 +27,7 @@ private lateinit var binding: FragmentResultBinding
         binding.apply {
             tvFirstName.text = result.firstName
             tvSecondName.text = result.secondName
-            tvScore.text = result.percentage
+            tvPercentage.text = result.percentage
             tvYourScore.text = result.result
         }
         binding.btnTryAgain.setOnClickListener {

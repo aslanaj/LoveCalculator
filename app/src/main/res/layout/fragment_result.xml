@@ -6,7 +6,7 @@
     android:gravity="center|top"
     android:orientation="vertical"
     android:padding="12dp"
-    tools:context=".ResultFragment">
+    tools:context=".ui.resultFragment.ResultFragment">
 
 
     <ImageView
@@ -59,14 +59,14 @@
             android:background="@drawable/heartsolid" />
 
         <TextView
+            android:id="@+id/tv_percentage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tv_score"
-            android:text="100%"
             android:layout_centerInParent="true"
-            android:textSize="18sp"
+            android:text="100%"
             android:textColor="@color/black"
-            android:textStyle="bold"/>
+            android:textSize="18sp"
+            android:textStyle="bold" />
     </RelativeLayout>
 
     <Button

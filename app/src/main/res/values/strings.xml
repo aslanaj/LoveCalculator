@@ -10,4 +10,6 @@
     <string name="calculate">CALCULATE</string>
     <string name="your_score">Your Score</string>
     <string name="try_again">Try Again</string>
+    <string name="history">History</string>
+    <string name="home">Home</string>
 </resources>

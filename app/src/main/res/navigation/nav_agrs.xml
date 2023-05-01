@@ -7,12 +7,17 @@
 
     <fragment
         android:id="@+id/loveCalculatorFragment"
-        android:name="com.example.lovecalculator.LoveCalculatorFragment"
+        android:name="com.example.lovecalculator.ui.loveCalculatorFragment.LoveCalculatorFragment"
         android:label="fragment_love_calculator"
         tools:layout="@layout/fragment_love_calculator" />
     <fragment
         android:id="@+id/resultFragment"
-        android:name="com.example.lovecalculator.ResultFragment"
+        android:name="com.example.lovecalculator.ui.resultFragment.ResultFragment"
         android:label="fragment_result"
         tools:layout="@layout/fragment_result" />
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.lovecalculator.ui.historyFragment.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
 </navigation>
