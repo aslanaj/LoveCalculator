@@ -6,13 +6,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.example.lovecalculator.R
 import com.example.lovecalculator.databinding.FragmentLoveCalculatorBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoveCalculatorFragment : Fragment() {
 
     private lateinit var binding: FragmentLoveCalculatorBinding
-    val viewModel: LoveViewModel by viewModels()
+
+    private val viewModel: LoveViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,11 +38,14 @@ class LoveCalculatorFragment : Fragment() {
                 viewModel.livelove(etFirstName.text.toString(), etSecondName.text.toString())
                     .observe(viewLifecycleOwner) { loveModel ->
                         Log.e("ololo", "initClicker: ${loveModel}")
-
+                        findNavController().navigate(R.id.resultFragment, bundleOf(KYE_FOR_RESULT to loveModel))
                     }
             }
         }
     }
 
+    companion object {
+        const val KYE_FOR_RESULT = "key"
+    }
 
 }

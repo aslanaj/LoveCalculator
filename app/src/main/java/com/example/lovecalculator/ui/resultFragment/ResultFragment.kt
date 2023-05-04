@@ -1,6 +1,7 @@
 package com.example.lovecalculator.ui.resultFragment
 
 import android.os.Bundle
+import android.provider.Contacts.SettingsColumns.KEY
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -23,17 +24,22 @@ private lateinit var binding: FragmentResultBinding
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val result = arguments?.getSerializable("key1") as LoveModel
-        binding.apply {
-            tvFirstName.text = result.firstName
-            tvSecondName.text = result.secondName
-            tvPercentage.text = result.percentage
-            tvYourScore.text = result.result
+        val result = arguments?.getSerializable(KYE_FOR_RESULT) as? LoveModel
+
+        if (result != null){
+            binding.apply {
+                tvFirstName.text = result.firstName
+                tvSecondName.text = result.secondName
+                tvPercentage.text = result.percentage
+                tvYourScore.text = result.result
+            }
         }
         binding.btnTryAgain.setOnClickListener {
             findNavController().navigateUp()
         }
     }
 
-
+    companion object {
+        const val KYE_FOR_RESULT = "key"
+    }
 }

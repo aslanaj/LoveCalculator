@@ -1,15 +1,11 @@
-package com.example.lovecalculator.ui
+package com.example.lovecalculator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.example.lovecalculator.databinding.ActivityMainBinding
-import com.example.lovecalculator.remote.LoveModel
-import com.example.lovecalculator.remote.RetrofitService
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
