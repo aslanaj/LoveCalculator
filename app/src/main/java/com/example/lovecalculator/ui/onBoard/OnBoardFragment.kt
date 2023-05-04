@@ -1,5 +1,7 @@
 package com.example.lovecalculator.ui.onBoard
 
+
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,17 +13,14 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.lovecalculator.R
 import com.example.lovecalculator.data.Pref
 import com.example.lovecalculator.databinding.FragmentOnBoardBinding
-import me.relex.circleindicator.CircleIndicator3
 import javax.inject.Inject
-
-
 
 class OnBoardFragment : Fragment() {
 
-private lateinit var binding: FragmentOnBoardBinding
-private lateinit var adapter: OnBoardAdapter
-@Inject
-lateinit var pref: Pref
+    private lateinit var binding: FragmentOnBoardBinding
+    private lateinit var adapter: OnBoardAdapter
+    @Inject
+    lateinit var pref: Pref
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,22 +33,29 @@ lateinit var pref: Pref
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        adapter = OnBoardAdapter(this::onStartClick)
         binding.viewPager.adapter = adapter
         setIndicator()
-        if (pref.isUserSeen()){
-            findNavController().navigate(R.id.loveCalculatorFragment)
-        }
     }
 
     private fun setIndicator() {
-        val indicator: CircleIndicator3 = binding.indicator
-        val viewPager = binding.viewPager
-        indicator.setViewPager(viewPager)
+        binding.indicator.setViewPager(binding.viewPager)
+        adapter.registerAdapterDataObserver(binding.indicator.adapterDataObserver)
+        binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
+                binding.indicator.isVisible = position != 3
+                super.onPageScrolled(position, positionOffset, positionOffsetPixels)
+            }
+        })
     }
 
     private fun onStartClick() {
         pref.saveUserSeen()
-        findNavController().navigate(R.id.onBoardFragment)
+        findNavController().navigate(R.id.loveCalculatorFragment)
     }
 
 }
