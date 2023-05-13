@@ -60,6 +60,7 @@ class OnBoardAdapter(
         fun bind(onBoard: OnBoard) {
 
             binding.apply {
+                onBoard.image?.let { imgBoard.setAnimation(it) }
                 imgBoard.setImageResource(onBoard.image!!)
                 tvTitle.text = onBoard.title
                 tvDesc.text = onBoard.desc
