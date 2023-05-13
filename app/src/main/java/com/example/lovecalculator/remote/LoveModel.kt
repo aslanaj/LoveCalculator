@@ -1,8 +1,10 @@
 package com.example.lovecalculator.remote
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
-
+@Entity("love_table")
 data class LoveModel(
 
     @SerializedName("fname")
@@ -10,5 +12,7 @@ data class LoveModel(
     @SerializedName("sname")
     var secondName: String,
     var percentage: String,
-    var result: String
+    var result: String,
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0
 ): Serializable

@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center|top"
-    android:orientation="vertical"
     android:padding="12dp"
     tools:context=".ui.resultFragment.ResultFragment">
 
 
     <ImageView
+        android:id="@+id/image_view"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_gravity="top"
         android:src="@drawable/pairs"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_first_name"
@@ -23,13 +24,20 @@
         android:layout_marginBottom="8dp"
         android:text="@string/you"
         android:textColor="@color/blue"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_view" />
 
     <ImageView
+        android:id="@+id/text"
         android:layout_width="24dp"
         android:layout_height="24dp"
+        android:layout_marginBottom="8dp"
         android:src="@drawable/heart"
-        android:layout_marginBottom="8dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_first_name" />
 
     <TextView
         android:id="@+id/tv_second_name"
@@ -38,24 +46,36 @@
         android:layout_marginBottom="8dp"
         android:text="@string/me"
         android:textColor="@color/blue"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text" />
 
     <TextView
+        android:id="@+id/tv_your_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
-        android:id="@+id/tv_your_score"
         android:text="@string/your_score"
         android:textColor="@color/red"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_second_name" />
 
     <RelativeLayout
+        android:id="@+id/container_heart"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_your_score">
+
         <ImageView
+            android:id="@+id/imageView"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:id="@+id/imageView"
             android:background="@drawable/heartsolid" />
 
         <TextView
@@ -64,18 +84,48 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="100%"
-            android:textColor="@color/black"
+
+            android:textColor="@color/blue"
             android:textSize="18sp"
             android:textStyle="bold" />
     </RelativeLayout>
 
     <Button
+        android:id="@+id/btn_try_again"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/red"
         android:text="@string/try_again"
-        android:id="@+id/btn_try_again"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/container_heart" />
 
 
+    <TextView
+        android:id="@+id/tv_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/ic_heart"
+        android:text="@string/home"
+        android:textColor="@color/blue"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/tv_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/ic_menu_history"
+        android:text="History"
+        android:textColor="@color/blue"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

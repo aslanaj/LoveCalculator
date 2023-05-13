@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.example.lovecalculator.R
 import com.example.lovecalculator.databinding.FragmentResultBinding
 import com.example.lovecalculator.remote.LoveModel
 
@@ -34,9 +35,23 @@ private lateinit var binding: FragmentResultBinding
                 tvYourScore.text = result.result
             }
         }
-        binding.btnTryAgain.setOnClickListener {
-            findNavController().navigateUp()
+        initClicker()
+
+    }
+
+    private fun initClicker() {
+        binding.apply {
+            btnTryAgain.setOnClickListener {
+                findNavController().navigateUp()
+            }
+            tvHome.setOnClickListener {
+                findNavController().navigate(R.id.loveCalculatorFragment)
+            }
+            tvHistory.setOnClickListener {
+                findNavController().navigate(R.id.historyFragment)
+            }
         }
+
     }
 
     companion object {

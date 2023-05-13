@@ -8,10 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import com.example.lovecalculator.App
 import com.example.lovecalculator.R
 import com.example.lovecalculator.databinding.FragmentLoveCalculatorBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class LoveCalculatorFragment : Fragment() {
@@ -37,10 +42,16 @@ class LoveCalculatorFragment : Fragment() {
             btnCalculate.setOnClickListener {
                 viewModel.livelove(etFirstName.text.toString(), etSecondName.text.toString())
                     .observe(viewLifecycleOwner) { loveModel ->
+                        lifecycleScope.launch(Dispatchers.IO) {
+                            App.appDatabase.loveDao().insert(loveModel)
+                        }
                         Log.e("ololo", "initClicker: ${loveModel}")
                         findNavController().navigate(R.id.resultFragment, bundleOf(KYE_FOR_RESULT to loveModel))
                     }
             }
+        }
+        binding.tvHistory.setOnClickListener {
+            findNavController().navigate(R.id.historyFragment)
         }
     }
 
